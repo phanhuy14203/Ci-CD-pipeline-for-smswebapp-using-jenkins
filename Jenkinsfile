@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     sh "dotnet restore"
-                    sh "sudo dotnet build"  // Sửa từ "donet" thành "dotnet"
+                    sh "sudo dotnet build"  
                 }
             }
         }
@@ -28,7 +28,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh "dotnet test --no-restore --configuration Release"  // Xóa dấu nháy kép thừa
+                    sh "dotnet test --no-restore --configuration Release"  
                 }	    
             }
         }
@@ -36,7 +36,7 @@ pipeline {
         stage('Publish') {
             steps {
                 script {
-                    sh "dotnet publish --no-restore --configuration Release --output ${PUBLISH_DIR}"  // Thêm biến cho đường dẫn
+                    sh "dotnet publish --no-restore --configuration Release"  
                 }
             }
         }
@@ -45,7 +45,6 @@ pipeline {
             steps {
                 script {
                     sh "sudo systemctl stop ${SERVICE_NAME}"
-                    sh "sudo cp -r ${PUBLISH_DIR}/* ${PROJECT_DIR}/"
                     sh "sudo systemctl start ${SERVICE_NAME}"
                 }
             }

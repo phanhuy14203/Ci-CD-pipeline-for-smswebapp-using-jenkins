@@ -1,5 +1,7 @@
 pipeline {
-    agent labserver
+    agent {
+        label 'labserver'
+    }
     environment {
         DOTNET_SDK_VERSION = '8.0' 
         SERVICE_NAME = 'smswebapp'

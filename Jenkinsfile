@@ -1,52 +1,47 @@
 pipeline {
-    agent any
-
+    agent labserver
     environment {
-        DOTNET_CLI_HOME = "C:\\Program Files\\dotnet"
+        DOTNET_SDK_VERSION = '8.0' 
+        SERVICE_NAME = 'smswebapp'
+        PUBLISH_DIR = './publish'
+        PROJECT_DIR = '/home/phanhuy/testdotnetprj/smswebapp/smswebapp'
     }
 
     stages {
-        stage('Checkout') {
+        stage('Clone Repository') {
             steps {
-                checkout scm
+                git url: 'https://github.com/your-repo-url.git', branch: 'main'
             }
         }
 
         stage('Build') {
             steps {
                 script {
-                    // Restoring dependencies
-                    //bat "cd ${DOTNET_CLI_HOME} && dotnet restore"
-                    bat "dotnet restore"
-
-                    // Building the application
-                    bat "dotnet build --configuration Release"
+                    sh "dotnet publish -c Release -o ${PUBLISH_DIR}"
                 }
             }
         }
 
-        stage('Test') {
+        stage('Deploy') {
             steps {
                 script {
-                    // Running tests
-                    bat "dotnet test --no-restore --configuration Release"
-                }
-            }
-        }
-
-        stage('Publish') {
-            steps {
-                script {
-                    // Publishing the application
-                    bat "dotnet publish --no-restore --configuration Release --output .\\publish"
+                    sh "sudo systemctl stop ${SERVICE_NAME}"
+                    sh "sudo cp -r ${PUBLISH_DIR}/* ${PROJECT_DIR}/"
+                    sh "sudo systemctl start ${SERVICE_NAME}"
                 }
             }
         }
     }
 
     post {
+        always {
+            cleanWs()
+        }
         success {
-            echo 'Build, test, and publish successful!'
+            echo 'Deployment successful!'
+        }
+        failure {
+            echo 'Deployment failed!'
         }
     }
 }

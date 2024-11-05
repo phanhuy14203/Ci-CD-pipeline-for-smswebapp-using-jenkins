@@ -19,7 +19,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh "dotnet restore"
+                    sh "sudo dotnet restore"
                     sh "sudo dotnet build"  
                 }
             }

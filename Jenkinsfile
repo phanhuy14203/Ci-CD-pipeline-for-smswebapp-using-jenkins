@@ -19,25 +19,28 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-		    sh "dotnet restore"
-                    sh "sudo donet build"
+                    sh "dotnet restore"
+                    sh "sudo dotnet build"  // Sửa từ "donet" thành "dotnet"
                 }
             }
         }
-	stage('Test') {
-	    steps {
+
+        stage('Test') {
+            steps {
                 script {
-                    sh "dotnet test --no-restore --configuration Release""
+                    sh "dotnet test --no-restore --configuration Release"  // Xóa dấu nháy kép thừa
                 }	    
-	    }
-	}
+            }
+        }
+
         stage('Publish') {
             steps {
                 script {
-                    sh "dotnet publish --no-restore --configuration Release --output ./publish"
+                    sh "dotnet publish --no-restore --configuration Release --output ${PUBLISH_DIR}"  // Thêm biến cho đường dẫn
                 }
             }
         }
+
         stage('Deploy') {
             steps {
                 script {

@@ -12,38 +12,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git url: 'https://github.com/your-repo-url.git', branch: 'main'
+                sh(script: """ whoami;pwd;ls -l """, label "first stage")
             }
         }
-
-        stage('Build') {
-            steps {
-                script {
-                    sh "dotnet publish -c Release -o ${PUBLISH_DIR}"
-                }
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                script {
-                    sh "sudo systemctl stop ${SERVICE_NAME}"
-                    sh "sudo cp -r ${PUBLISH_DIR}/* ${PROJECT_DIR}/"
-                    sh "sudo systemctl start ${SERVICE_NAME}"
-                }
-            }
-        }
-    }
-
-    post {
-        always {
-            cleanWs()
-        }
-        success {
-            echo 'Deployment successful!'
-        }
-        failure {
-            echo 'Deployment failed!'
-        }
-    }
 }

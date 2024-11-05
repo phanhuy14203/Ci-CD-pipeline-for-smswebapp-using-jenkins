@@ -28,7 +28,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh "dotnet test --no-restore --configuration Release"  
+                    sh "sudo dotnet test --no-restore --configuration Release"  
                 }	    
             }
         }
@@ -36,7 +36,7 @@ pipeline {
         stage('Publish') {
             steps {
                 script {
-                    sh "dotnet publish --no-restore --configuration Release"  
+                    sh "sudo dotnet publish --no-restore --configuration Release"  
                 }
             }
         }

@@ -45,6 +45,7 @@ pipeline {
             steps {
                 script {
                     sh "sudo systemctl stop ${SERVICE_NAME}"
+                    sh "sudo systemctl daemon-reload"
                     sh "sudo systemctl start ${SERVICE_NAME}"
                 }
             }

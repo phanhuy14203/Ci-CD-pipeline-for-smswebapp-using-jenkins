@@ -4,7 +4,8 @@
 ### Step 2: Integrate GitHub and Jenkins via Webhook, using ngrok to assist in this process.
 ### Step 3: Install Jenkins agent on the node and connect it to the Jenkins server.
 ### Step 4: Service and web server configuration: using systemd and nginx to support this process.
-### Step 5: Write a Jenkinsfile to define the pipeline.
+### Step 5: Grant permissions to the jenkins user to execute sudo commands without needing to enter a password.
+### Step 6: Write a Jenkinsfile to define the pipeline.
 ## 📌Step 1: Prepare 2 virtual machines that serve as the Jenkins server and the web server.
 ### Install Jenkins on the Linux operating system
 ```
@@ -118,7 +119,20 @@ sudo nano /etc/nginx/sites-available/smswebapp
 ```
 Result: 
 ![myService](myService.jpg)
-## 📌Step 5: Write a Jenkinsfile to define the pipeline.
+## 📌Step 5: Grant permissions to the jenkins user to execute sudo commands without needing to enter a password.
+### Depending on which sudo commands are used in the Jenkins file, grant additional permissions to the jenkins user to use those sudo commands without needing to enter a password.
+```
+sudo visudo
+```
+### My configuration
+```
+jenkins ALL=(ALL) NOPASSWD: /usr/bin/dotnet*
+jenkins ALL=(ALL) NOPASSWD: /bin/systemctl daemon-reload
+jenkins ALL=(ALL) NOPASSWD: /bin/systemctl restart smswebapp
+jenkins ALL=(ALL) NOPASSWD: /bin/systemctl start smswebapp
+jenkins ALL=(ALL) NOPASSWD: /bin/systemctl stop smswebapp
+```
+## 📌Step 6: Write a Jenkinsfile to define the pipeline.
 ### 1. Add New Item at Dashboard of Jenkins
 ### 2. Create an item name and Select an item type (I choose pipeline.)
 ### 3. Select Build Triggers as GitHub hook trigger for GITScm polling, in the Pipeline section choose Definition as Pipeline script from SCM with SCM as Git, then select Repository URL as https://github.com/phanhuy14203/Ci-CD-pipeline-for-smswebapp-using-jenkins.git, branch as main, and Script Path as Jenkinsfile.

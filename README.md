@@ -46,7 +46,7 @@ location / {
 }
 ```
 Result:
-![Jenkins Dashboard](jenkins_dashboard.jpg =WIDTHxHEIGHT)
+![Jenkins Dashboard](jenkins_dashboard.jpg)
 ### Install .NET SDK on the web server.
 ```
 wget https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb

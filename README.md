@@ -79,15 +79,15 @@ Result:
 ![Webhook](Webhook.jpg)
 ## 📌Step 3: Install Jenkins agent on the node and connect it to the Jenkins server.
 ### Add new node at Dashboard/Manage Jenkins/Nodes with the Launch method set to 'Launch agent by connecting it to the controller'
-### create a file named secret-file that contains a secret token or secret key
+### Create a file named secret-file that contains a secret token or secret key
 ```
 echo your_secret_key > secret-file
 ```
-### download the agent.jar file from the specified URL
+### Download the agent.jar file from the specified URL
 ```
 curl -sO http://your_url/jnlpJars/agent.jar
 ```
-### launch a Jenkins agent on a server
+### Launch a Jenkins agent on a server
 ```
 http://jenkins.phanhuy.tech:8080/ -secret @secret-file -name your-node-label -webSocket -workDir "your-path" > nohub.out 2>&1 &
 ```

@@ -1,11 +1,11 @@
 # CI-CD-pipeline-for-smswebapp-using-jenkins
 ## 📌Summary of steps
-### [Step 1: Prepare 2 virtual machines that serve as the Jenkins server and the web server.](#step-1-prepare-2-virtual-machines-that-serve-as-the-jenkins-server-and-the-web-server)
-### [Step 2: Integrate GitHub and Jenkins via Webhook, using ngrok to assist in this process.](#step-2-integrate-github-and-jenkins-via-webhook-using-ngrok-to-assist-in-this-process)
-### [Step 3: Install Jenkins agent on the node and connect it to the Jenkins server.](#step-3-install-jenkins-agent-on-the-node-and-connect-it-to-the-jenkins-server)
-### [Step 4: Service and web server configuration: using systemd and nginx to support this process.](#step-4-service-and-web-server-configuration-using-systemd-and-nginx-to-support-this-process)
-### [Step 5: Grant permissions to the jenkins user to execute sudo commands without needing to enter a password.](#step-5-grant-permissions-to-the-jenkins-user-to-execute-sudo-commands-without-needing-to-enter-a-password)
-### [Step 6: Write a Jenkinsfile to define the pipeline.](#step-6-write-a-jenkinsfile-to-define-the-pipeline)
+### Step 1: Prepare 2 virtual machines that serve as the Jenkins server and the web server.
+### Step 2: Integrate GitHub and Jenkins via Webhook, using ngrok to assist in this process.
+### Step 3: Install Jenkins agent on the node and connect it to the Jenkins server.
+### Step 4: Service and web server configuration: using systemd and nginx to support this process.
+### Step 5: Grant permissions to the jenkins user to execute sudo commands without needing to enter a password.
+### Step 6: Write a Jenkinsfile to define the pipeline.
 ## 📌Step 1: Prepare 2 virtual machines that serve as the Jenkins server and the web server.
 ### Install Jenkins on the Linux operating system
 ```

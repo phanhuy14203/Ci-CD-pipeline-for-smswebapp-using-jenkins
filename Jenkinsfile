@@ -3,8 +3,7 @@ pipeline {
         label 'labserver'
     }
     environment {
-        PUBLISH_DIR = './publish'
-        PROJECT_DIR = '/home/phanhuy/testdotnetprj/smswebapp/smswebapp'
+        SERVICE_NAME = 'smswebapp'
     }
 
     stages {

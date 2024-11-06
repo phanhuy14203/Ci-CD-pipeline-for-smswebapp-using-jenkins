@@ -22,11 +22,11 @@ ufw allow 8080
 ```
 #### Update /etc/hosts for Jenkins hostname on linux
 ```
-ip-of-jenkins-server jenkins.phanhuy.tech
+IP_Of_Jenkins_server jenkins.phanhuy.tech
 ```
 #### Update C:\Windows\System32\drivers\etc\hosts on Window
 ```
-ip-of-jenkins-server jenkins.phanhuy.tech
+IP_Of_Jenkins_server jenkins.phanhuy.tech
 ```
 #### Configure Nginx as a reverse proxy for Jenkins.
 Create conf.d/jenkins.phanhuy.tech.conf at /etc/nginx

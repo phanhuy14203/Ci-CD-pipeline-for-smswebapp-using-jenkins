@@ -72,8 +72,8 @@ ngrok authtoken YOUR_AUTH_TOKEN
 ngrok http http://jenkins.phanhuy.tech:8080
 ```
 ### Result:
-![ngrok](ngrok.jpg =WIDTHxHEIGHT)
+![ngrok](ngrok.jpg)
 ### Use the URL from ngrok to set up a webhook connection between GitHub and Jenkins.
 Result:
-![Webhook.jpg](Webhook.jpg =WIDTHxHEIGHT)
+![Webhook.jpg](Webhook.jpg)
 ## 📌Step 3: Install Jenkins agent on the node and connect it to the Jenkins server.

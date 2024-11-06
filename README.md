@@ -1,4 +1,4 @@
-# CI-CD-pipeline-for-dotnetCoreapp-using-jenkins
+# CI-CD-pipeline-for-smswebapp-using-jenkins
 ## 📌Summary of steps
 ### Step 1: Prepare 2 virtual machines that serve as the Jenkins server and the web server.
 ### Step 2: Integrate GitHub and Jenkins via Webhook, using ngrok to assist in this process.
